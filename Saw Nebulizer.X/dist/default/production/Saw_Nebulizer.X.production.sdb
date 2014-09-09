@@ -1,0 +1,669 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1938 ]
+[d frameptr 6 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/abdiv.c
+[v ___abdiv __abdiv `(c  1 e 1 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/abmod.c
+[v ___abmod __abmod `(c  1 e 1 0 ]
+"33 /Applications/microchip/xc8/v1.32/sources/common/abtoft.c
+[v ___abtoft __abtoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"5 /Applications/microchip/xc8/v1.32/sources/common/almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"42 /Applications/microchip/xc8/v1.32/sources/common/altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"5 /Applications/microchip/xc8/v1.32/sources/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
+"37 /Applications/microchip/xc8/v1.32/sources/common/attoft.c
+[v ___attoft __attoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"32 /Applications/microchip/xc8/v1.32/sources/common/awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"492 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"62 /Applications/microchip/xc8/v1.32/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /Applications/microchip/xc8/v1.32/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 /Applications/microchip/xc8/v1.32/sources/common/ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.32/sources/common/ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"18 /Applications/microchip/xc8/v1.32/sources/common/ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 /Applications/microchip/xc8/v1.32/sources/common/fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"8 /Applications/microchip/xc8/v1.32/sources/common/isdigit.c
+[v _isdigit isdigit `(b  1 e 0 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/lbmod.c
+[v ___lbmod __lbmod `(uc  1 e 1 0 ]
+"27 /Applications/microchip/xc8/v1.32/sources/common/lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"35 /Applications/microchip/xc8/v1.32/sources/common/lltoft.c
+[v ___lltoft __lltoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"30 /Applications/microchip/xc8/v1.32/sources/common/lttoft.c
+[v ___lttoft __lttoft `(f  1 e 3 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 /Applications/microchip/xc8/v1.32/sources/common/lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/strchr.c
+[v _strchr strchr `(*.25uc  1 e 1 0 ]
+"33 /Applications/microchip/xc8/v1.32/sources/common/strcmp.c
+[v _strcmp strcmp `(i  1 e 2 0 ]
+"8 /Applications/microchip/xc8/v1.32/sources/common/strcpy.c
+[v _strcpy strcpy `(*.4uc  1 e 1 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
+"8 /Applications/microchip/xc8/v1.32/sources/common/strtok.c
+[v _strtok strtok `(*.4uc  1 e 1 0 ]
+"5 /Applications/microchip/xc8/v1.32/sources/common/tolower.c
+[v _tolower tolower `(uc  1 e 1 0 ]
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+[v i1___lmul __lmul `(ul  1 e 4 0 ]
+"4 /Applications/microchip/xc8/v1.32/sources/common/Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 /Applications/microchip/xc8/v1.32/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"48
+[v ___eetoc __eetoc `(uc  1 e 1 0 ]
+"56
+[v ___eetoi __eetoi `(ui  1 e 2 0 ]
+"64
+[v ___eetom __eetom `(um  1 e 3 0 ]
+"72
+[v ___eetol __eetol `(ul  1 e 4 0 ]
+"80
+[v ___ctoee __ctoee `(uc  1 e 1 0 ]
+"87
+[v ___itoee __itoee `(ui  1 e 2 0 ]
+"94
+[v ___mtoee __mtoee `(um  1 e 3 0 ]
+"101
+[v ___ltoee __ltoee `(ul  1 e 4 0 ]
+"108
+[v ___eetoft __eetoft `(f  1 e 3 0 ]
+"116
+[v ___eetofl __eetofl `(d  1 e 3 0 ]
+"124
+[v ___fttoee __fttoee `(f  1 e 3 0 ]
+"131
+[v ___fltoee __fltoee `(d  1 e 3 0 ]
+"49 /Applications/microchip/xc8/v1.32/sources/pic/ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"26 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+[v _tc_int tc_int `II(v  1 e 0 0 ]
+"35 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+[v _main main `(i  1 e 2 0 ]
+"130
+[v _parse_setup_cmd parse_setup_cmd `(i  1 e 2 0 ]
+"167
+[v _echo_command echo_command `(i  1 e 2 0 ]
+"178
+[v _remote_command remote_command `(i  1 e 2 0 ]
+"189
+[v _enable1_command enable1_command `(i  1 e 2 0 ]
+"200
+[v _enable2_command enable2_command `(i  1 e 2 0 ]
+"211
+[v _pulse_command pulse_command `(i  1 e 2 0 ]
+"222
+[v _power_command power_command `(i  1 e 2 0 ]
+"237
+[v _ttlout_command ttlout_command `(i  1 e 2 0 ]
+"249
+[v _status_command status_command `(i  1 e 2 0 ]
+"8 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+[v _pic_setup pic_setup `(v  1 e 0 0 ]
+"81
+[v _serputchar serputchar `(v  1 e 0 0 ]
+"87
+[v _sergetchar sergetchar `(uc  1 e 1 0 ]
+"93
+[v _serputstr serputstr `(v  1 e 0 0 ]
+"103
+[v _sergetline sergetline `(i  1 e 2 0 ]
+"1006 /Applications/microchip/xc8/v1.32/include/pic16f1938.h
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"1025
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+"1193
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1254
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1315
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1558
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
+"1805
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1943
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1962
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"1981
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+"2069
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"3008
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3065
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3122
+[v _EEADR EEADR `VEus  1 e 2 @401 ]
+"3177
+[v _EEDATA EEDATA `VEuc  1 e 1 @403 ]
+"3228
+[v _EECON1 EECON1 `VEuc  1 e 1 @405 ]
+"3289
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
+"3308
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"3327
+[v _TXREG TXREG `VEuc  1 e 1 @410 ]
+"3361
+[v _SPBRGL SPBRGL `VEuc  1 e 1 @411 ]
+"3410
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @412 ]
+"4421
+[v _CCPR2L CCPR2L `VEuc  1 e 1 @664 ]
+"4459
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @666 ]
+"4765
+[v _CCPTMRS0 CCPTMRS0 `VEuc  1 e 1 @670 ]
+"7045
+[v _BRG16 BRG16 `VEb  1 e 0 @3323 ]
+"7047
+[v _BRGH BRGH `VEb  1 e 0 @3314 ]
+"7141
+[v _CARRY CARRY `VEb  1 e 0 @24 ]
+"7267
+[v _CREN CREN `VEb  1 e 0 @3308 ]
+"7343
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"7643
+[v _RA3 RA3 `VEb  1 e 0 @99 ]
+"7645
+[v _RA4 RA4 `VEb  1 e 0 @100 ]
+"7647
+[v _RA5 RA5 `VEb  1 e 0 @101 ]
+"7649
+[v _RA6 RA6 `VEb  1 e 0 @102 ]
+"7651
+[v _RA7 RA7 `VEb  1 e 0 @103 ]
+"7653
+[v _RB0 RB0 `VEb  1 e 0 @104 ]
+"7655
+[v _RB1 RB1 `VEb  1 e 0 @105 ]
+"7657
+[v _RB2 RB2 `VEb  1 e 0 @106 ]
+"7659
+[v _RB3 RB3 `VEb  1 e 0 @107 ]
+"7661
+[v _RB4 RB4 `VEb  1 e 0 @108 ]
+"7663
+[v _RB5 RB5 `VEb  1 e 0 @109 ]
+"7669
+[v _RC0 RC0 `VEb  1 e 0 @112 ]
+"7671
+[v _RC1 RC1 `VEb  1 e 0 @113 ]
+"7673
+[v _RC2 RC2 `VEb  1 e 0 @114 ]
+"7675
+[v _RC3 RC3 `VEb  1 e 0 @115 ]
+"7677
+[v _RC4 RC4 `VEb  1 e 0 @116 ]
+"7679
+[v _RC5 RC5 `VEb  1 e 0 @117 ]
+"7691
+[v _RCIF RCIF `VEb  1 e 0 @141 ]
+"7693
+[v _RD RD `VEb  1 e 0 @3240 ]
+"7887
+[v _SPEN SPEN `VEb  1 e 0 @3311 ]
+"7981
+[v _SYNC SYNC `VEb  1 e 0 @3316 ]
+"8057
+[v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
+"8059
+[v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
+"8169
+[v _TXEN TXEN `VEb  1 e 0 @3317 ]
+"8173
+[v _TXIF TXIF `VEb  1 e 0 @140 ]
+"8219
+[v _WR WR `VEb  1 e 0 @3241 ]
+"8221
+[v _WREN WREN `VEb  1 e 0 @3242 ]
+"8233
+[v _nDONE nDONE `VEb  1 e 0 @1257 ]
+"354 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
+[v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
+"10 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+[v _AD_x AD_x `DCC[8]ui  1 s 16 AD_x ]
+"11
+[v _AD_a AD_a `DCC[8]ul  1 s 32 AD_a ]
+"12
+[v _AD_b AD_b `DCC[8]uc  1 s 8 AD_b ]
+"17 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+[v _echo_enabled echo_enabled `b  1 e 0 0 ]
+"18
+[v _remote_enabled remote_enabled `b  1 e 0 0 ]
+"19
+[v _channel1_enabled channel1_enabled `b  1 e 0 0 ]
+"20
+[v _channel2_enabled channel2_enabled `b  1 e 0 0 ]
+"21
+[v _pulse_enabled pulse_enabled `b  1 e 0 0 ]
+"22
+[v _remote_power_level remote_power_level `uc  1 e 1 0 ]
+"23
+[v _power_light_counter power_light_counter `s  1 e 2 0 ]
+"26
+[v _enc_A_2 enc_A_2 `b  1 e 0 0 ]
+[v _enc_A_1 enc_A_1 `b  1 e 0 0 ]
+[v _enc_B_2 enc_B_2 `b  1 e 0 0 ]
+[v _enc_B_1 enc_B_1 `b  1 e 0 0 ]
+"27
+[v _enc_position enc_position `i  1 e 2 0 ]
+[s S111 cmdlist 4 `*.25DCCuc 1 cmdname 2 0 `*.37(i 1 cmdptr 2 2 ]
+"114
+[v _commands commands `DCC[8]S111  1 e 32 0 ]
+"35
+[v _main main `(i  1 e 2 0 ]
+{
+[s S77 command 12 `[10]uc 1 arg1 10 0 `*.37(i 1 cmdptr 2 10 ]
+"39
+[v main@cmd_descr cmd_descr `S77  1 a 12 65 ]
+"38
+[v main@cmdbuf cmdbuf `[10]uc  1 a 10 49 ]
+"37
+[v main@i i `l  1 a 4 59 ]
+[v main@j j `l  1 a 4 45 ]
+"36
+[v main@status status `i  1 a 2 63 ]
+"35
+[v main@argc argc `i  1 p 2 40 ]
+[v main@argv argv `*.1*.1uc  1 p 2 42 ]
+"111
+} 0
+"249
+[v _status_command status_command `(i  1 e 2 0 ]
+{
+"251
+[v status_command@buf buf `[10]uc  1 a 10 26 ]
+"252
+[v status_command@temp temp `l  1 a 4 36 ]
+"249
+[v status_command@param1 param1 `*.4uc  1 p 1 19 ]
+"289
+} 0
+"222
+[v _power_command power_command `(i  1 e 2 0 ]
+{
+"225
+[v power_command@temp temp `l  1 a 4 27 ]
+"224
+[v power_command@val val `i  1 a 2 31 ]
+"222
+[v power_command@param1 param1 `*.4uc  1 p 1 19 ]
+"235
+} 0
+"211
+[v _pulse_command pulse_command `(i  1 e 2 0 ]
+{
+"213
+[v pulse_command@val val `i  1 a 2 22 ]
+"211
+[v pulse_command@param1 param1 `*.4uc  1 p 1 19 ]
+"220
+} 0
+"200
+[v _enable2_command enable2_command `(i  1 e 2 0 ]
+{
+"202
+[v enable2_command@val val `i  1 a 2 22 ]
+"200
+[v enable2_command@param1 param1 `*.4uc  1 p 1 19 ]
+"209
+} 0
+"189
+[v _enable1_command enable1_command `(i  1 e 2 0 ]
+{
+"191
+[v enable1_command@val val `i  1 a 2 22 ]
+"189
+[v enable1_command@param1 param1 `*.4uc  1 p 1 19 ]
+"198
+} 0
+"178
+[v _remote_command remote_command `(i  1 e 2 0 ]
+{
+"180
+[v remote_command@val val `i  1 a 2 22 ]
+"178
+[v remote_command@param1 param1 `*.4uc  1 p 1 19 ]
+"187
+} 0
+"167
+[v _echo_command echo_command `(i  1 e 2 0 ]
+{
+"169
+[v echo_command@val val `i  1 a 2 22 ]
+"167
+[v echo_command@param1 param1 `*.4uc  1 p 1 19 ]
+"176
+} 0
+"237
+[v _ttlout_command ttlout_command `(i  1 e 2 0 ]
+{
+"239
+[v ttlout_command@val val `i  1 a 2 22 ]
+"237
+[v ttlout_command@param1 param1 `*.4uc  1 p 1 19 ]
+"246
+} 0
+"492 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
+[s S377 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+"533
+[u S380 . 4 `ui 1 _val 2 0 `S377 1 _str 4 0 ]
+[v sprintf@_val _val `S380  1 a 4 13 ]
+"499
+[v sprintf@c c `c  1 a 1 18 ]
+"506
+[v sprintf@prec prec `c  1 a 1 12 ]
+"508
+[v sprintf@flag flag `uc  1 a 1 11 ]
+"494
+[v sprintf@ap ap `[1]*.4v  1 a 1 10 ]
+"492
+[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
+[v sprintf@f f `*.25DCCuc  1 p 2 2 ]
+"542
+[v sprintf@sp sp `*.4uc  1 a 1 17 ]
+"1550
+} 0
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 1 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 31 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 33 ]
+"26
+} 0
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 29 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 28 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 23 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 25 ]
+"31
+} 0
+"103 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+[v _sergetline sergetline `(i  1 e 2 0 ]
+{
+[v sergetline@buf buf `*.4uc  1 a 1 wreg ]
+"105
+[v sergetline@i i `i  1 a 2 7 ]
+"106
+[v sergetline@c c `uc  1 a 1 9 ]
+"103
+[v sergetline@buf buf `*.4uc  1 a 1 wreg ]
+[v sergetline@bsize bsize `i  1 p 2 4 ]
+"108
+[v sergetline@buf buf `*.4uc  1 a 1 6 ]
+"131
+} 0
+"5 /Applications/microchip/xc8/v1.32/sources/common/tolower.c
+[v _tolower tolower `(uc  1 e 1 0 ]
+{
+[v tolower@c c `uc  1 a 1 wreg ]
+[v tolower@c c `uc  1 a 1 wreg ]
+"10
+[v tolower@c c `uc  1 a 1 23 ]
+"13
+} 0
+"93 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+[v _serputstr serputstr `(v  1 e 0 0 ]
+{
+"95
+[v serputstr@i i `i  1 a 2 2 ]
+[v serputstr@len len `i  1 a 2 0 ]
+"93
+[v serputstr@line line `*.26DCCuc  1 p 2 29 ]
+"101
+} 0
+"81
+[v _serputchar serputchar `(v  1 e 0 0 ]
+{
+[v serputchar@c c `DCCuc  1 a 1 wreg ]
+[v serputchar@c c `DCCuc  1 a 1 wreg ]
+[v serputchar@c c `DCCuc  1 a 1 23 ]
+"85
+} 0
+"87
+[v _sergetchar sergetchar `(uc  1 e 1 0 ]
+{
+"91
+} 0
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 31 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 23 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 27 ]
+"129
+} 0
+"8 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+[v _pic_setup pic_setup `(v  1 e 0 0 ]
+{
+"78
+} 0
+"130 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+[v _parse_setup_cmd parse_setup_cmd `(i  1 e 2 0 ]
+{
+[v parse_setup_cmd@buf buf `*.4uc  1 a 1 wreg ]
+"132
+[v parse_setup_cmd@cbuf cbuf `[10]uc  1 a 10 16 ]
+"134
+[v parse_setup_cmd@i i `i  1 a 2 29 ]
+[v parse_setup_cmd@num_cmds num_cmds `i  1 a 2 26 ]
+"133
+[v parse_setup_cmd@tokptr tokptr `*.4uc  1 a 1 31 ]
+"130
+[v parse_setup_cmd@buf buf `*.4uc  1 a 1 wreg ]
+[s S77 command 12 `[10]uc 1 arg1 10 0 `*.37(i 1 cmdptr 2 10 ]
+[v parse_setup_cmd@cmd_descr cmd_descr `*.4S77  1 p 1 8 ]
+"137
+[v parse_setup_cmd@buf buf `*.4uc  1 a 1 28 ]
+"165
+} 0
+"8 /Applications/microchip/xc8/v1.32/sources/common/strtok.c
+[v _strtok strtok `(*.4uc  1 e 1 0 ]
+{
+[v strtok@s1 s1 `*.4uc  1 a 1 wreg ]
+[v strtok@s1 s1 `*.4uc  1 a 1 wreg ]
+[v strtok@s2 s2 `*.25DCCuc  1 p 2 3 ]
+"15
+[v strtok@sp sp `*.4uc  1 s 1 sp ]
+"18
+[v strtok@s1 s1 `*.4uc  1 a 1 33 ]
+"31
+} 0
+"4 /Applications/microchip/xc8/v1.32/sources/common/strspn.c
+[v _strspn strspn `(ui  1 e 2 0 ]
+{
+[v strspn@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+"6
+[v strspn@i i `ui  1 a 2 0 ]
+"4
+[v strspn@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+[v strspn@s2 s2 `*.25DCCuc  1 p 2 29 ]
+"8
+[v strspn@s1 s1 `*.4DCCuc  1 a 1 2 ]
+"14
+} 0
+"4 /Applications/microchip/xc8/v1.32/sources/common/strcspn.c
+[v _strcspn strcspn `(ui  1 e 2 0 ]
+{
+[v strcspn@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+"6
+[v strcspn@i i `ui  1 a 2 0 ]
+"4
+[v strcspn@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+[v strcspn@s2 s2 `*.25DCCuc  1 p 2 29 ]
+"8
+[v strcspn@s1 s1 `*.4DCCuc  1 a 1 2 ]
+"14
+} 0
+"4 /Applications/microchip/xc8/v1.32/sources/common/strchr.c
+[v _strchr strchr `(*.25uc  1 e 1 0 ]
+{
+[v strchr@ptr ptr `*.25DCCuc  1 p 2 23 ]
+[v strchr@chr chr `i  1 p 2 25 ]
+"11
+} 0
+"8 /Applications/microchip/xc8/v1.32/sources/common/strcpy.c
+[v _strcpy strcpy `(*.4uc  1 e 1 0 ]
+{
+[v strcpy@to to `*.4uc  1 a 1 wreg ]
+"15
+[v strcpy@cp cp `*.4uc  1 a 1 25 ]
+"8
+[v strcpy@to to `*.4uc  1 a 1 wreg ]
+[v strcpy@from from `*.4DCCuc  1 p 1 23 ]
+"18
+[v strcpy@to to `*.4uc  1 a 1 26 ]
+"24
+} 0
+"33 /Applications/microchip/xc8/v1.32/sources/common/strcmp.c
+[v _strcmp strcmp `(i  1 e 2 0 ]
+{
+[v strcmp@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+"35
+[v strcmp@r r `c  1 a 1 26 ]
+"33
+[v strcmp@s1 s1 `*.4DCCuc  1 a 1 wreg ]
+[v strcmp@s2 s2 `*.25DCCuc  1 p 2 23 ]
+[v strcmp@s1 s1 `*.4DCCuc  1 a 1 27 ]
+"42
+} 0
+"4 /Applications/microchip/xc8/v1.32/sources/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"6
+[v strlen@cp cp `*.26DCCuc  1 a 2 27 ]
+"4
+[v strlen@s s `*.26DCCuc  1 p 2 23 ]
+"13
+} 0
+"5 /Applications/microchip/xc8/v1.32/sources/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
+{
+[v atoi@s s `*.4DCCuc  1 a 1 wreg ]
+"7
+[v atoi@a a `i  1 a 2 1 ]
+"8
+[v atoi@sign sign `uc  1 a 1 0 ]
+"5
+[v atoi@s s `*.4DCCuc  1 a 1 wreg ]
+[v atoi@s s `*.4DCCuc  1 a 1 3 ]
+"24
+} 0
+"8 /Applications/microchip/xc8/v1.32/sources/common/isdigit.c
+[v _isdigit isdigit `(b  1 e 0 0 ]
+{
+[v isdigit@c c `uc  1 a 1 wreg ]
+[v isdigit@c c `uc  1 a 1 wreg ]
+"14
+[v isdigit@c c `uc  1 a 1 24 ]
+"15
+} 0
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 27 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 23 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 25 ]
+"53
+} 0
+"26 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+[v _tc_int tc_int `II(v  1 e 0 0 ]
+{
+"32
+[v tc_int@period period `us  1 a 2 21 ]
+[v tc_int@slewed_period slewed_period `us  1 a 2 18 ]
+[v tc_int@AD_val AD_val `us  1 a 2 16 ]
+[v tc_int@pwm pwm `us  1 a 2 14 ]
+"33
+[v tc_int@i i `uc  1 a 1 20 ]
+"28
+[v tc_int@overtemp_1 overtemp_1 `b  1 s 0 overtemp_1 ]
+[v tc_int@overtemp_2 overtemp_2 `b  1 s 0 overtemp_2 ]
+"29
+[v tc_int@fet_temp_timer fet_temp_timer `uc  1 s 1 fet_temp_timer ]
+"30
+[v tc_int@fault_timer_1 fault_timer_1 `us  1 s 2 fault_timer_1 ]
+[v tc_int@fault_timer_2 fault_timer_2 `us  1 s 2 fault_timer_2 ]
+[v tc_int@pulse_timer pulse_timer `us  1 s 2 pulse_timer ]
+"31
+[v tc_int@fet_temp_1 fet_temp_1 `ul  1 s 4 fet_temp_1 ]
+[v tc_int@fet_temp_2 fet_temp_2 `ul  1 s 4 fet_temp_2 ]
+"205
+} 0
+"15 /Applications/microchip/xc8/v1.32/sources/common/Umul32.c
+[v i1___lmul __lmul `(ul  1 e 4 0 ]
+{
+[v i1___lmul@product __lmul `ul  1 a 4 8 ]
+[v i1___lmul@multiplier multiplier `ul  1 p 4 0 ]
+[v i1___lmul@multiplicand multiplicand `ul  1 p 4 4 ]
+"129
+} 0
