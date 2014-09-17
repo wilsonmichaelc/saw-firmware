@@ -3229,6 +3229,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;functions.h: 14: int power_command(char *param1);
 [; ;functions.h: 15: int ttlout_command(char *param1);
 [; ;functions.h: 16: int status_command(char *param1);
+[; ;functions.h: 17: int errors_command(char *param1);
 "10 interrupt.c
 [v _AD_x `Cui ~T0 @X0 -> 0 `x s ]
 [i _AD_x
@@ -3277,9 +3278,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "15
 [v _power_light_counter `s ~T0 @X0 1 e ]
 [; ;interrupt.c: 15: short int power_light_counter;
-[v F3553 `(v ~T0 @X0 1 tf ]
+[v F3555 `(v ~T0 @X0 1 tf ]
 "26
-[v _tc_int `IF3553 ~T0 @X0 1 e ]
+[v _tc_int `IF3555 ~T0 @X0 1 e ]
 "27
 {
 [; ;interrupt.c: 26: void interrupt tc_int(void)
@@ -3287,39 +3288,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _tc_int ]
 [f ]
 "28
-[v F3554 `b ~T0 @X0 1 s overtemp_1 ]
-[i F3554
+[v F3556 `b ~T0 @X0 1 s overtemp_1 ]
+[i F3556
 -> 0 `i
 ]
-[v F3555 `b ~T0 @X0 1 s overtemp_2 ]
-[i F3555
+[v F3557 `b ~T0 @X0 1 s overtemp_2 ]
+[i F3557
 -> 0 `i
 ]
 "29
-[v F3556 `uc ~T0 @X0 1 s fet_temp_timer ]
-[i F3556
+[v F3558 `uc ~T0 @X0 1 s fet_temp_timer ]
+[i F3558
 -> -> 0 `i `uc
 ]
 "30
-[v F3557 `us ~T0 @X0 1 s fault_timer_1 ]
-[i F3557
--> -> 0 `i `us
-]
-[v F3558 `us ~T0 @X0 1 s fault_timer_2 ]
-[i F3558
--> -> 0 `i `us
-]
-[v F3559 `us ~T0 @X0 1 s pulse_timer ]
+[v F3559 `us ~T0 @X0 1 s fault_timer_1 ]
 [i F3559
 -> -> 0 `i `us
 ]
-"31
-[v F3560 `ul ~T0 @X0 1 s fet_temp_1 ]
+[v F3560 `us ~T0 @X0 1 s fault_timer_2 ]
 [i F3560
+-> -> 0 `i `us
+]
+[v F3561 `us ~T0 @X0 1 s pulse_timer ]
+[i F3561
+-> -> 0 `i `us
+]
+"31
+[v F3562 `ul ~T0 @X0 1 s fet_temp_1 ]
+[i F3562
 -> -> -> 0 `i `l `ul
 ]
-[v F3561 `ul ~T0 @X0 1 s fet_temp_2 ]
-[i F3561
+[v F3563 `ul ~T0 @X0 1 s fet_temp_2 ]
+[i F3563
 -> -> -> 0 `i `l `ul
 ]
 "32
@@ -3559,7 +3560,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.c: 99: }
 [; ;interrupt.c: 105: if ((fault_timer_1 > 0) || (fault_timer_2 > 0)) {
 "105
-[e $ ! || > -> F3557 `ui -> -> 0 `i `ui > -> F3558 `ui -> -> 0 `i `ui 386  ]
+[e $ ! || > -> F3559 `ui -> -> 0 `i `ui > -> F3560 `ui -> -> 0 `i `ui 386  ]
 {
 [; ;interrupt.c: 106: period = 0;
 "106
@@ -3635,7 +3636,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _AD_val -> + << -> -> _ADRESH `us `ui -> 2 `i >> -> -> _ADRESL `us `ui -> 6 `i `us ]
 [; ;interrupt.c: 129: fet_temp_1 += AD_val;
 "129
-[e =+ F3560 -> _AD_val `ul ]
+[e =+ F3562 -> _AD_val `ul ]
 [; ;interrupt.c: 132: ADCON0 = 0x07;
 "132
 [e = _ADCON0 -> -> 7 `i `uc ]
@@ -3661,21 +3662,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _AD_val -> + << -> -> _ADRESH `us `ui -> 2 `i >> -> -> _ADRESL `us `ui -> 6 `i `us ]
 [; ;interrupt.c: 137: fet_temp_2 += AD_val;
 "137
-[e =+ F3561 -> _AD_val `ul ]
+[e =+ F3563 -> _AD_val `ul ]
 [; ;interrupt.c: 139: ++fet_temp_timer;
 "139
-[e =+ F3556 -> -> 1 `i `uc ]
+[e =+ F3558 -> -> 1 `i `uc ]
 [; ;interrupt.c: 140: if (!fet_temp_timer) {
 "140
-[e $ ! ! != -> F3556 `i -> -> -> 0 `i `uc `i 404  ]
+[e $ ! ! != -> F3558 `i -> -> -> 0 `i `uc `i 404  ]
 {
 [; ;interrupt.c: 141: if ((fet_temp_1 >> 8) < 431) {
 "141
-[e $ ! < >> F3560 -> 8 `i -> -> -> 431 `i `l `ul 405  ]
+[e $ ! < >> F3562 -> 8 `i -> -> -> 431 `i `l `ul 405  ]
 {
 [; ;interrupt.c: 142: overtemp_1 = 1;
 "142
-[e = F3554 -> -> 1 `i `b ]
+[e = F3556 -> -> 1 `i `b ]
 "143
 }
 [; ;interrupt.c: 143: } else {
@@ -3684,18 +3685,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 144: overtemp_1 = 0;
 "144
-[e = F3554 -> -> 0 `i `b ]
+[e = F3556 -> -> 0 `i `b ]
 "145
 }
 [e :U 406 ]
 [; ;interrupt.c: 145: }
 [; ;interrupt.c: 147: if ((fet_temp_2 >> 8) < 431) {
 "147
-[e $ ! < >> F3561 -> 8 `i -> -> -> 431 `i `l `ul 407  ]
+[e $ ! < >> F3563 -> 8 `i -> -> -> 431 `i `l `ul 407  ]
 {
 [; ;interrupt.c: 148: overtemp_2 = 1;
 "148
-[e = F3555 -> -> 1 `i `b ]
+[e = F3557 -> -> 1 `i `b ]
 "149
 }
 [; ;interrupt.c: 149: } else {
@@ -3704,14 +3705,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 150: overtemp_2 = 0;
 "150
-[e = F3555 -> -> 0 `i `b ]
+[e = F3557 -> -> 0 `i `b ]
 "151
 }
 [e :U 408 ]
 [; ;interrupt.c: 151: }
 [; ;interrupt.c: 152: fet_temp_1 = fet_temp_2 = 0;
 "152
-[e = F3560 = F3561 -> -> -> 0 `i `l `ul ]
+[e = F3562 = F3563 -> -> -> 0 `i `l `ul ]
 "153
 }
 [e :U 404 ]
@@ -3722,7 +3723,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 158: fault_timer_1 = 512;
 "158
-[e = F3557 -> -> 512 `i `us ]
+[e = F3559 -> -> 512 `i `us ]
 "159
 }
 [; ;interrupt.c: 159: } else {
@@ -3731,8 +3732,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 160: if (fault_timer_1) --fault_timer_1;
 "160
-[e $ ! != -> F3557 `ui -> -> -> 0 `i `us `ui 411  ]
-[e =- F3557 -> -> 1 `i `us ]
+[e $ ! != -> F3559 `ui -> -> -> 0 `i `us `ui 411  ]
+[e =- F3559 -> -> 1 `i `us ]
 [e :U 411 ]
 "161
 }
@@ -3744,7 +3745,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 164: fault_timer_2 = 512;
 "164
-[e = F3558 -> -> 512 `i `us ]
+[e = F3560 -> -> 512 `i `us ]
 "165
 }
 [; ;interrupt.c: 165: } else {
@@ -3753,8 +3754,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 166: if (fault_timer_2) --fault_timer_2;
 "166
-[e $ ! != -> F3558 `ui -> -> -> 0 `i `us `ui 414  ]
-[e =- F3558 -> -> 1 `i `us ]
+[e $ ! != -> F3560 `ui -> -> -> 0 `i `us `ui 414  ]
+[e =- F3560 -> -> 1 `i `us ]
 [e :U 414 ]
 "167
 }
@@ -3762,11 +3763,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;interrupt.c: 167: }
 [; ;interrupt.c: 170: if (pulse_timer < 100) {
 "170
-[e $ ! < -> F3559 `ui -> -> 100 `i `ui 415  ]
+[e $ ! < -> F3561 `ui -> -> 100 `i `ui 415  ]
 {
 [; ;interrupt.c: 171: ++pulse_timer;
 "171
-[e =+ F3559 -> -> 1 `i `us ]
+[e =+ F3561 -> -> 1 `i `us ]
 "172
 }
 [; ;interrupt.c: 172: } else {
@@ -3775,23 +3776,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;interrupt.c: 173: pulse_timer = 0;
 "173
-[e = F3559 -> -> 0 `i `us ]
+[e = F3561 -> -> 0 `i `us ]
 "174
 }
 [e :U 416 ]
 [; ;interrupt.c: 174: }
 [; ;interrupt.c: 177: RB1 = !overtemp_1;
 "177
-[e = _RB1 ! F3554 ]
+[e = _RB1 ! F3556 ]
 [; ;interrupt.c: 178: RB3 = !overtemp_2;
 "178
-[e = _RB3 ! F3555 ]
+[e = _RB3 ! F3557 ]
 [; ;interrupt.c: 179: RB0 = !(fault_timer_1 > 0);
 "179
-[e = _RB0 ! > -> F3557 `ui -> -> 0 `i `ui ]
+[e = _RB0 ! > -> F3559 `ui -> -> 0 `i `ui ]
 [; ;interrupt.c: 180: RB2 = !(fault_timer_2 > 0);
 "180
-[e = _RB2 ! > -> F3558 `ui -> -> 0 `i `ui ]
+[e = _RB2 ! > -> F3560 `ui -> -> 0 `i `ui ]
 [; ;interrupt.c: 182: if (remote_enabled == 1) {
 "182
 [e $ ! == -> _remote_enabled `i -> 1 `i 417  ]
@@ -3801,13 +3802,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RB5 -> -> 0 `i `b ]
 [; ;interrupt.c: 186: RC2 = !pulse_enabled || (pulse_enabled && (pulse_timer < 20));
 "186
-[e = _RC2 || ! _pulse_enabled && _pulse_enabled < -> F3559 `ui -> -> 20 `i `ui ]
+[e = _RC2 || ! _pulse_enabled && _pulse_enabled < -> F3561 `ui -> -> 20 `i `ui ]
 [; ;interrupt.c: 189: RC0 = !(fault_timer_1 > 0) && !overtemp_1 & channel1_enabled;
 "189
-[e = _RC0 && ! > -> F3557 `ui -> -> 0 `i `ui & ! F3554 _channel1_enabled ]
+[e = _RC0 && ! > -> F3559 `ui -> -> 0 `i `ui & ! F3556 _channel1_enabled ]
 [; ;interrupt.c: 190: RC3 = !(fault_timer_2 > 0) && !overtemp_2 && channel2_enabled;
 "190
-[e = _RC3 && && ! > -> F3558 `ui -> -> 0 `i `ui ! F3555 _channel2_enabled ]
+[e = _RC3 && && ! > -> F3560 `ui -> -> 0 `i `ui ! F3557 _channel2_enabled ]
 "192
 }
 [; ;interrupt.c: 192: } else {
@@ -3819,13 +3820,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _RB5 -> -> 1 `i `b ]
 [; ;interrupt.c: 196: RC2 = RA6 || (!RA6 && (pulse_timer < 20));
 "196
-[e = _RC2 || _RA6 && ! _RA6 < -> F3559 `ui -> -> 20 `i `ui ]
+[e = _RC2 || _RA6 && ! _RA6 < -> F3561 `ui -> -> 20 `i `ui ]
 [; ;interrupt.c: 199: RC0 = !(fault_timer_1 > 0) && !overtemp_1;
 "199
-[e = _RC0 && ! > -> F3557 `ui -> -> 0 `i `ui ! F3554 ]
+[e = _RC0 && ! > -> F3559 `ui -> -> 0 `i `ui ! F3556 ]
 [; ;interrupt.c: 200: RC3 = !(fault_timer_2 > 0) && !overtemp_2 && !RA5;
 "200
-[e = _RC3 && && ! > -> F3558 `ui -> -> 0 `i `ui ! F3555 ! _RA5 ]
+[e = _RC3 && && ! > -> F3560 `ui -> -> 0 `i `ui ! F3557 ! _RA5 ]
 "202
 }
 [e :U 418 ]

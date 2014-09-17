@@ -4388,6 +4388,7 @@ int pulse_command(char *param1);
 int power_command(char *param1);
 int ttlout_command(char *param1);
 int status_command(char *param1);
+int errors_command(char *param1);
 
 # 10 "interrupt.c"
 const static unsigned int AD_x[] = {16, 32, 48, 64, 80, 96, 112, 127};

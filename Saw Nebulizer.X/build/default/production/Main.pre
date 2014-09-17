@@ -4388,6 +4388,7 @@ int pulse_command(char *param1);
 int power_command(char *param1);
 int ttlout_command(char *param1);
 int status_command(char *param1);
+int errors_command(char *param1);
 
 # 17 "Main.c"
 bit echo_enabled = 0;
@@ -4495,10 +4496,11 @@ const CMD_LIST_ITEM commands[] = {
 {"pulse", pulse_command},
 {"pwr", power_command},
 {"ttlout", ttlout_command},
-{"status", status_command}
+{"status", status_command},
+{"errors", errors_command}
 };
 
-# 130
+# 131
 int parse_setup_cmd(char *buf, CMD_DESRCIPTION *cmd_descr)
 {
 char cbuf[10];
@@ -4640,6 +4642,30 @@ temp = (long int)remote_power_level * 25700L + 32768L;
 temp = temp >> 16;
 sprintf(buf, "PWR=%d ", (int)temp);
 serputstr(buf);
+
+sprintf(buf, "FL1=%d ", ~RB0 & 0x0001);
+serputstr(buf);
+
+sprintf(buf, "FL2=%d ", ~RB2 & 0x0001);
+serputstr(buf);
+
+sprintf(buf, "OT1=%d ", ~RB1 & 0x0001);
+serputstr(buf);
+
+sprintf(buf, "OT2=%d", ~RB3 & 0x0001);
+serputstr(buf);
+
+serputstr("\r");
+if (echo_enabled) serputstr("\n");
+
+return -3;
+
+}
+
+int errors_command(char *param1)
+{
+char buf[10];
+serputstr("ERR ");
 
 sprintf(buf, "FL1=%d ", ~RB0 & 0x0001);
 serputstr(buf);

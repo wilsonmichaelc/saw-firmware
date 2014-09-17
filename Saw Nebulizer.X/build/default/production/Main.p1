@@ -34,6 +34,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ttlout_command `(i ~T0 @X0 0 ef1`*uc ]
 "16
 [v _status_command `(i ~T0 @X0 0 ef1`*uc ]
+"17
+[v _errors_command `(i ~T0 @X0 0 ef1`*uc ]
 "47 /Applications/microchip/xc8/v1.32/include/string.h
 [v _strtok `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
 "43
@@ -3222,6 +3224,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;functions.h: 14: int power_command(char *param1);
 [; ;functions.h: 15: int ttlout_command(char *param1);
 [; ;functions.h: 16: int status_command(char *param1);
+[; ;functions.h: 17: int errors_command(char *param1);
 "17 Main.c
 [v _echo_enabled `b ~T0 @X0 1 e ]
 [i _echo_enabled
@@ -3576,6 +3579,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 :s 21C
 &U _status_command
 ..
+:U ..
+"123
+:s 22C
+&U _errors_command
+..
 ..
 ]
 [; ;Main.c: 114: const CMD_LIST_ITEM commands[] = {
@@ -3586,533 +3594,598 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Main.c: 119: {"pulse", pulse_command},
 [; ;Main.c: 120: {"pwr", power_command},
 [; ;Main.c: 121: {"ttlout", ttlout_command},
-[; ;Main.c: 122: {"status", status_command}
-[; ;Main.c: 123: };
-"130
-[v _parse_setup_cmd `(i ~T0 @X0 1 ef2`*uc`*S355 ]
+[; ;Main.c: 122: {"status", status_command},
+[; ;Main.c: 123: {"errors", errors_command}
+[; ;Main.c: 124: };
 "131
+[v _parse_setup_cmd `(i ~T0 @X0 1 ef2`*uc`*S355 ]
+"132
 {
-[; ;Main.c: 130: int parse_setup_cmd(char *buf, CMD_DESRCIPTION *cmd_descr)
-[; ;Main.c: 131: {
+[; ;Main.c: 131: int parse_setup_cmd(char *buf, CMD_DESRCIPTION *cmd_descr)
+[; ;Main.c: 132: {
 [e :U _parse_setup_cmd ]
-"130
+"131
 [v _buf `*uc ~T0 @X0 1 r1 ]
 [v _cmd_descr `*S355 ~T0 @X0 1 r2 ]
-"131
-[f ]
 "132
-[v _cbuf `uc ~T0 @X0 -> 10 `i a ]
+[f ]
 "133
-[v _tokptr `*uc ~T0 @X0 1 a ]
+[v _cbuf `uc ~T0 @X0 -> 10 `i a ]
 "134
+[v _tokptr `*uc ~T0 @X0 1 a ]
+"135
 [v _num_cmds `i ~T0 @X0 1 a ]
 [v _i `i ~T0 @X0 1 a ]
-[; ;Main.c: 132: char cbuf[10];
-[; ;Main.c: 133: char *tokptr;
-[; ;Main.c: 134: int num_cmds, i;
-[; ;Main.c: 137: cmd_descr->arg1[0] = 0;
-"137
+[; ;Main.c: 133: char cbuf[10];
+[; ;Main.c: 134: char *tokptr;
+[; ;Main.c: 135: int num_cmds, i;
+[; ;Main.c: 138: cmd_descr->arg1[0] = 0;
+"138
 [e = *U + &U . *U _cmd_descr 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _cmd_descr 0 `ui `ux -> -> 0 `i `uc ]
-[; ;Main.c: 140: tokptr = strtok(buf, " ");
-"140
-[e = _tokptr ( _strtok (2 , _buf :s 22C ]
-[; ;Main.c: 141: if (tokptr == (0)) {
+[; ;Main.c: 141: tokptr = strtok(buf, " ");
 "141
+[e = _tokptr ( _strtok (2 , _buf :s 23C ]
+[; ;Main.c: 142: if (tokptr == (0)) {
+"142
 [e $ ! == _tokptr -> -> 0 `i `*uc 384  ]
 {
-[; ;Main.c: 142: return -1;
-"142
+[; ;Main.c: 143: return -1;
+"143
 [e ) -U -> 1 `i ]
 [e $UE 383  ]
-"143
+"144
 }
-[; ;Main.c: 143: } else {
+[; ;Main.c: 144: } else {
 [e $U 385  ]
 [e :U 384 ]
 {
-[; ;Main.c: 144: strcpy(cbuf, tokptr);
-"144
-[e ( _strcpy (2 , &U _cbuf -> _tokptr `*Cuc ]
+[; ;Main.c: 145: strcpy(cbuf, tokptr);
 "145
+[e ( _strcpy (2 , &U _cbuf -> _tokptr `*Cuc ]
+"146
 }
 [e :U 385 ]
-[; ;Main.c: 145: }
-[; ;Main.c: 148: tokptr = strtok((0), "~");
-"148
-[e = _tokptr ( _strtok (2 , -> -> 0 `i `*uc :s 23C ]
-[; ;Main.c: 149: if (tokptr != (0)) {
+[; ;Main.c: 146: }
+[; ;Main.c: 149: tokptr = strtok((0), "~");
 "149
+[e = _tokptr ( _strtok (2 , -> -> 0 `i `*uc :s 24C ]
+[; ;Main.c: 150: if (tokptr != (0)) {
+"150
 [e $ ! != _tokptr -> -> 0 `i `*uc 386  ]
 {
-[; ;Main.c: 150: strcpy(cmd_descr->arg1, tokptr);
-"150
-[e ( _strcpy (2 , &U . *U _cmd_descr 0 -> _tokptr `*Cuc ]
+[; ;Main.c: 151: strcpy(cmd_descr->arg1, tokptr);
 "151
+[e ( _strcpy (2 , &U . *U _cmd_descr 0 -> _tokptr `*Cuc ]
+"152
 }
-[; ;Main.c: 151: } else {
+[; ;Main.c: 152: } else {
 [e $U 387  ]
 [e :U 386 ]
 {
-[; ;Main.c: 152: cmd_descr->arg1[0] = 0;
-"152
-[e = *U + &U . *U _cmd_descr 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _cmd_descr 0 `ui `ux -> -> 0 `i `uc ]
+[; ;Main.c: 153: cmd_descr->arg1[0] = 0;
 "153
+[e = *U + &U . *U _cmd_descr 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _cmd_descr 0 `ui `ux -> -> 0 `i `uc ]
+"154
 }
 [e :U 387 ]
-[; ;Main.c: 153: }
-[; ;Main.c: 156: num_cmds = sizeof(commands) / sizeof(CMD_LIST_ITEM);
-"156
-[e = _num_cmds -> / -> # _commands `ui -> # `S356 `ui `i ]
-[; ;Main.c: 157: for (i = 0; i < num_cmds; ++i) {
+[; ;Main.c: 154: }
+[; ;Main.c: 157: num_cmds = sizeof(commands) / sizeof(CMD_LIST_ITEM);
 "157
+[e = _num_cmds -> / -> # _commands `ui -> # `S356 `ui `i ]
+[; ;Main.c: 158: for (i = 0; i < num_cmds; ++i) {
+"158
 {
 [e = _i -> 0 `i ]
 [e $U 391  ]
 [e :U 388 ]
 {
-[; ;Main.c: 158: if (strcmp(cbuf, commands[i].cmdname) == 0) {
-"158
+[; ;Main.c: 159: if (strcmp(cbuf, commands[i].cmdname) == 0) {
+"159
 [e $ ! == ( _strcmp (2 , -> &U _cbuf `*Cuc -> . *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux 0 `*Cuc -> 0 `i 392  ]
 {
-[; ;Main.c: 159: cmd_descr->cmdptr = commands[i].cmdptr;
-"159
-[e = . *U _cmd_descr 1 -> . *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux 1 `*F3497 ]
-[; ;Main.c: 160: return 0;
+[; ;Main.c: 160: cmd_descr->cmdptr = commands[i].cmdptr;
 "160
+[e = . *U _cmd_descr 1 -> . *U + &U _commands * -> -> _i `ui `ux -> -> # *U &U _commands `ui `ux 1 `*F3497 ]
+[; ;Main.c: 161: return 0;
+"161
 [e ) -> 0 `i ]
 [e $UE 383  ]
-"161
-}
-[e :U 392 ]
 "162
 }
-"157
+[e :U 392 ]
+"163
+}
+"158
 [e =+ _i -> 1 `i ]
 [e :U 391 ]
 [e $ < _i _num_cmds 388  ]
 [e :U 389 ]
-"162
+"163
 }
-[; ;Main.c: 161: }
 [; ;Main.c: 162: }
-[; ;Main.c: 164: return -2;
-"164
+[; ;Main.c: 163: }
+[; ;Main.c: 165: return -2;
+"165
 [e ) -U -> 2 `i ]
 [e $UE 383  ]
-[; ;Main.c: 165: }
-"165
+[; ;Main.c: 166: }
+"166
 [e :UE 383 ]
 }
-"167
+"168
 [v _echo_command `(i ~T0 @X0 1 ef1`*uc ]
-"168
-{
-[; ;Main.c: 167: int echo_command(char *param1)
-[; ;Main.c: 168: {
-[e :U _echo_command ]
-"167
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"168
-[f ]
 "169
+{
+[; ;Main.c: 168: int echo_command(char *param1)
+[; ;Main.c: 169: {
+[e :U _echo_command ]
+"168
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"169
+[f ]
+"170
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 169: int val;
-[; ;Main.c: 171: if (strlen(param1) == 0) return -1;
-"171
+[; ;Main.c: 170: int val;
+[; ;Main.c: 172: if (strlen(param1) == 0) return -1;
+"172
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 394  ]
 [e ) -U -> 1 `i ]
 [e $UE 393  ]
 [e :U 394 ]
-[; ;Main.c: 172: val = atoi(param1);
-"172
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 173: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 173: val = atoi(param1);
 "173
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 174: if (val < 0 || val > 1) return -2;
+"174
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 395  ]
 [e ) -U -> 2 `i ]
 [e $UE 393  ]
 [e :U 395 ]
-[; ;Main.c: 174: echo_enabled = val;
-"174
-[e = _echo_enabled -> _val `b ]
-[; ;Main.c: 175: return 0;
+[; ;Main.c: 175: echo_enabled = val;
 "175
+[e = _echo_enabled -> _val `b ]
+[; ;Main.c: 176: return 0;
+"176
 [e ) -> 0 `i ]
 [e $UE 393  ]
-[; ;Main.c: 176: }
-"176
+[; ;Main.c: 177: }
+"177
 [e :UE 393 ]
 }
-"178
+"179
 [v _remote_command `(i ~T0 @X0 1 ef1`*uc ]
-"179
-{
-[; ;Main.c: 178: int remote_command(char *param1)
-[; ;Main.c: 179: {
-[e :U _remote_command ]
-"178
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"179
-[f ]
 "180
+{
+[; ;Main.c: 179: int remote_command(char *param1)
+[; ;Main.c: 180: {
+[e :U _remote_command ]
+"179
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"180
+[f ]
+"181
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 180: int val;
-[; ;Main.c: 182: if (strlen(param1) == 0) return -1;
-"182
+[; ;Main.c: 181: int val;
+[; ;Main.c: 183: if (strlen(param1) == 0) return -1;
+"183
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 397  ]
 [e ) -U -> 1 `i ]
 [e $UE 396  ]
 [e :U 397 ]
-[; ;Main.c: 183: val = atoi(param1);
-"183
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 184: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 184: val = atoi(param1);
 "184
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 185: if (val < 0 || val > 1) return -2;
+"185
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 398  ]
 [e ) -U -> 2 `i ]
 [e $UE 396  ]
 [e :U 398 ]
-[; ;Main.c: 185: remote_enabled = val;
-"185
-[e = _remote_enabled -> _val `b ]
-[; ;Main.c: 186: return 0;
+[; ;Main.c: 186: remote_enabled = val;
 "186
+[e = _remote_enabled -> _val `b ]
+[; ;Main.c: 187: return 0;
+"187
 [e ) -> 0 `i ]
 [e $UE 396  ]
-[; ;Main.c: 187: }
-"187
+[; ;Main.c: 188: }
+"188
 [e :UE 396 ]
 }
-"189
+"190
 [v _enable1_command `(i ~T0 @X0 1 ef1`*uc ]
-"190
-{
-[; ;Main.c: 189: int enable1_command(char *param1)
-[; ;Main.c: 190: {
-[e :U _enable1_command ]
-"189
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"190
-[f ]
 "191
+{
+[; ;Main.c: 190: int enable1_command(char *param1)
+[; ;Main.c: 191: {
+[e :U _enable1_command ]
+"190
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"191
+[f ]
+"192
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 191: int val;
-[; ;Main.c: 193: if (strlen(param1) == 0) return -1;
-"193
+[; ;Main.c: 192: int val;
+[; ;Main.c: 194: if (strlen(param1) == 0) return -1;
+"194
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 400  ]
 [e ) -U -> 1 `i ]
 [e $UE 399  ]
 [e :U 400 ]
-[; ;Main.c: 194: val = atoi(param1);
-"194
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 195: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 195: val = atoi(param1);
 "195
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 196: if (val < 0 || val > 1) return -2;
+"196
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 401  ]
 [e ) -U -> 2 `i ]
 [e $UE 399  ]
 [e :U 401 ]
-[; ;Main.c: 196: channel1_enabled = val;
-"196
-[e = _channel1_enabled -> _val `b ]
-[; ;Main.c: 197: return 0;
+[; ;Main.c: 197: channel1_enabled = val;
 "197
+[e = _channel1_enabled -> _val `b ]
+[; ;Main.c: 198: return 0;
+"198
 [e ) -> 0 `i ]
 [e $UE 399  ]
-[; ;Main.c: 198: }
-"198
+[; ;Main.c: 199: }
+"199
 [e :UE 399 ]
 }
-"200
+"201
 [v _enable2_command `(i ~T0 @X0 1 ef1`*uc ]
-"201
-{
-[; ;Main.c: 200: int enable2_command(char *param1)
-[; ;Main.c: 201: {
-[e :U _enable2_command ]
-"200
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"201
-[f ]
 "202
+{
+[; ;Main.c: 201: int enable2_command(char *param1)
+[; ;Main.c: 202: {
+[e :U _enable2_command ]
+"201
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"202
+[f ]
+"203
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 202: int val;
-[; ;Main.c: 204: if (strlen(param1) == 0) return -1;
-"204
+[; ;Main.c: 203: int val;
+[; ;Main.c: 205: if (strlen(param1) == 0) return -1;
+"205
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 403  ]
 [e ) -U -> 1 `i ]
 [e $UE 402  ]
 [e :U 403 ]
-[; ;Main.c: 205: val = atoi(param1);
-"205
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 206: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 206: val = atoi(param1);
 "206
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 207: if (val < 0 || val > 1) return -2;
+"207
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 404  ]
 [e ) -U -> 2 `i ]
 [e $UE 402  ]
 [e :U 404 ]
-[; ;Main.c: 207: channel2_enabled = val;
-"207
-[e = _channel2_enabled -> _val `b ]
-[; ;Main.c: 208: return 0;
+[; ;Main.c: 208: channel2_enabled = val;
 "208
+[e = _channel2_enabled -> _val `b ]
+[; ;Main.c: 209: return 0;
+"209
 [e ) -> 0 `i ]
 [e $UE 402  ]
-[; ;Main.c: 209: }
-"209
+[; ;Main.c: 210: }
+"210
 [e :UE 402 ]
 }
-"211
+"212
 [v _pulse_command `(i ~T0 @X0 1 ef1`*uc ]
-"212
-{
-[; ;Main.c: 211: int pulse_command(char *param1)
-[; ;Main.c: 212: {
-[e :U _pulse_command ]
-"211
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"212
-[f ]
 "213
+{
+[; ;Main.c: 212: int pulse_command(char *param1)
+[; ;Main.c: 213: {
+[e :U _pulse_command ]
+"212
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"213
+[f ]
+"214
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 213: int val;
-[; ;Main.c: 215: if (strlen(param1) == 0) return -1;
-"215
+[; ;Main.c: 214: int val;
+[; ;Main.c: 216: if (strlen(param1) == 0) return -1;
+"216
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 406  ]
 [e ) -U -> 1 `i ]
 [e $UE 405  ]
 [e :U 406 ]
-[; ;Main.c: 216: val = atoi(param1);
-"216
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 217: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 217: val = atoi(param1);
 "217
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 218: if (val < 0 || val > 1) return -2;
+"218
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 407  ]
 [e ) -U -> 2 `i ]
 [e $UE 405  ]
 [e :U 407 ]
-[; ;Main.c: 218: pulse_enabled = val;
-"218
-[e = _pulse_enabled -> _val `b ]
-[; ;Main.c: 219: return 0;
+[; ;Main.c: 219: pulse_enabled = val;
 "219
+[e = _pulse_enabled -> _val `b ]
+[; ;Main.c: 220: return 0;
+"220
 [e ) -> 0 `i ]
 [e $UE 405  ]
-[; ;Main.c: 220: }
-"220
+[; ;Main.c: 221: }
+"221
 [e :UE 405 ]
 }
-"222
+"223
 [v _power_command `(i ~T0 @X0 1 ef1`*uc ]
-"223
-{
-[; ;Main.c: 222: int power_command(char *param1)
-[; ;Main.c: 223: {
-[e :U _power_command ]
-"222
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"223
-[f ]
 "224
-[v _val `i ~T0 @X0 1 a ]
+{
+[; ;Main.c: 223: int power_command(char *param1)
+[; ;Main.c: 224: {
+[e :U _power_command ]
+"223
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"224
+[f ]
 "225
+[v _val `i ~T0 @X0 1 a ]
+"226
 [v _temp `l ~T0 @X0 1 a ]
-[; ;Main.c: 224: int val;
-[; ;Main.c: 225: long int temp;
-[; ;Main.c: 227: if (strlen(param1) == 0) return -1;
-"227
+[; ;Main.c: 225: int val;
+[; ;Main.c: 226: long int temp;
+[; ;Main.c: 228: if (strlen(param1) == 0) return -1;
+"228
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 409  ]
 [e ) -U -> 1 `i ]
 [e $UE 408  ]
 [e :U 409 ]
-[; ;Main.c: 228: val = atoi(param1);
-"228
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 229: if (val < 0 || val > 100) return -2;
+[; ;Main.c: 229: val = atoi(param1);
 "229
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 230: if (val < 0 || val > 100) return -2;
+"230
 [e $ ! || < _val -> 0 `i > _val -> 100 `i 410  ]
 [e ) -U -> 2 `i ]
 [e $UE 408  ]
 [e :U 410 ]
-[; ;Main.c: 232: temp = (long int)val * 167116L + 32768L;
-"232
-[e = _temp + * -> _val `l -> 167116 `l -> 32768 `l ]
-[; ;Main.c: 233: remote_power_level = temp >> 16;
+[; ;Main.c: 233: temp = (long int)val * 167116L + 32768L;
 "233
-[e = _remote_power_level -> >> _temp -> 16 `i `uc ]
-[; ;Main.c: 234: return 0;
+[e = _temp + * -> _val `l -> 167116 `l -> 32768 `l ]
+[; ;Main.c: 234: remote_power_level = temp >> 16;
 "234
+[e = _remote_power_level -> >> _temp -> 16 `i `uc ]
+[; ;Main.c: 235: return 0;
+"235
 [e ) -> 0 `i ]
 [e $UE 408  ]
-[; ;Main.c: 235: }
-"235
+[; ;Main.c: 236: }
+"236
 [e :UE 408 ]
 }
-"237
+"238
 [v _ttlout_command `(i ~T0 @X0 1 ef1`*uc ]
-"238
-{
-[; ;Main.c: 237: int ttlout_command(char *param1)
-[; ;Main.c: 238: {
-[e :U _ttlout_command ]
-"237
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"238
-[f ]
 "239
+{
+[; ;Main.c: 238: int ttlout_command(char *param1)
+[; ;Main.c: 239: {
+[e :U _ttlout_command ]
+"238
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"239
+[f ]
+"240
 [v _val `i ~T0 @X0 1 a ]
-[; ;Main.c: 239: int val;
-[; ;Main.c: 241: if (strlen(param1) == 0) return -1;
-"241
+[; ;Main.c: 240: int val;
+[; ;Main.c: 242: if (strlen(param1) == 0) return -1;
+"242
 [e $ ! == ( _strlen (1 -> _param1 `*Cuc -> -> 0 `i `ui 412  ]
 [e ) -U -> 1 `i ]
 [e $UE 411  ]
 [e :U 412 ]
-[; ;Main.c: 242: val = atoi(param1);
-"242
-[e = _val ( _atoi (1 -> _param1 `*Cuc ]
-[; ;Main.c: 243: if (val < 0 || val > 1) return -2;
+[; ;Main.c: 243: val = atoi(param1);
 "243
+[e = _val ( _atoi (1 -> _param1 `*Cuc ]
+[; ;Main.c: 244: if (val < 0 || val > 1) return -2;
+"244
 [e $ ! || < _val -> 0 `i > _val -> 1 `i 413  ]
 [e ) -U -> 2 `i ]
 [e $UE 411  ]
 [e :U 413 ]
-[; ;Main.c: 244: RA7 = ~val;
-"244
-[e = _RA7 -> ~ _val `b ]
-[; ;Main.c: 245: return 0;
+[; ;Main.c: 245: RA7 = ~val;
 "245
+[e = _RA7 -> ~ _val `b ]
+[; ;Main.c: 246: return 0;
+"246
 [e ) -> 0 `i ]
 [e $UE 411  ]
-[; ;Main.c: 246: }
-"246
+[; ;Main.c: 247: }
+"247
 [e :UE 411 ]
 }
-"249
+"250
 [v _status_command `(i ~T0 @X0 1 ef1`*uc ]
-"250
-{
-[; ;Main.c: 249: int status_command(char *param1)
-[; ;Main.c: 250: {
-[e :U _status_command ]
-"249
-[v _param1 `*uc ~T0 @X0 1 r1 ]
-"250
-[f ]
 "251
-[v _buf `uc ~T0 @X0 -> 10 `i a ]
+{
+[; ;Main.c: 250: int status_command(char *param1)
+[; ;Main.c: 251: {
+[e :U _status_command ]
+"250
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"251
+[f ]
 "252
+[v _buf `uc ~T0 @X0 -> 10 `i a ]
+"253
 [v _temp `l ~T0 @X0 1 a ]
-[; ;Main.c: 251: char buf[10];
-[; ;Main.c: 252: long int temp;
-[; ;Main.c: 254: serputstr("OK ");
-"254
-[e ( _serputstr (1 :s 24C ]
-[; ;Main.c: 255: sprintf(buf, "REM=%d ", remote_enabled);
+[; ;Main.c: 252: char buf[10];
+[; ;Main.c: 253: long int temp;
+[; ;Main.c: 255: serputstr("OK ");
 "255
-[e ( _sprintf (1 , (. , &U _buf :s 25C -> _remote_enabled `i ]
-[; ;Main.c: 256: serputstr(buf);
+[e ( _serputstr (1 :s 25C ]
+[; ;Main.c: 256: sprintf(buf, "REM=%d ", remote_enabled);
 "256
+[e ( _sprintf (1 , (. , &U _buf :s 26C -> _remote_enabled `i ]
+[; ;Main.c: 257: serputstr(buf);
+"257
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 258: sprintf(buf, "EN1=%d ", channel1_enabled);
-"258
-[e ( _sprintf (1 , (. , &U _buf :s 26C -> _channel1_enabled `i ]
-[; ;Main.c: 259: serputstr(buf);
+[; ;Main.c: 259: sprintf(buf, "EN1=%d ", channel1_enabled);
 "259
+[e ( _sprintf (1 , (. , &U _buf :s 27C -> _channel1_enabled `i ]
+[; ;Main.c: 260: serputstr(buf);
+"260
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 261: sprintf(buf, "EN2=%d ", channel2_enabled);
-"261
-[e ( _sprintf (1 , (. , &U _buf :s 27C -> _channel2_enabled `i ]
-[; ;Main.c: 262: serputstr(buf);
+[; ;Main.c: 262: sprintf(buf, "EN2=%d ", channel2_enabled);
 "262
+[e ( _sprintf (1 , (. , &U _buf :s 28C -> _channel2_enabled `i ]
+[; ;Main.c: 263: serputstr(buf);
+"263
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 264: sprintf(buf, "PUL=%d ", pulse_enabled);
-"264
-[e ( _sprintf (1 , (. , &U _buf :s 28C -> _pulse_enabled `i ]
-[; ;Main.c: 265: serputstr(buf);
+[; ;Main.c: 265: sprintf(buf, "PUL=%d ", pulse_enabled);
 "265
+[e ( _sprintf (1 , (. , &U _buf :s 29C -> _pulse_enabled `i ]
+[; ;Main.c: 266: serputstr(buf);
+"266
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 267: temp = (long int)remote_power_level * 25700L + 32768L;
-"267
-[e = _temp + * -> _remote_power_level `l -> 25700 `l -> 32768 `l ]
-[; ;Main.c: 268: temp = temp >> 16;
+[; ;Main.c: 268: temp = (long int)remote_power_level * 25700L + 32768L;
 "268
-[e = _temp >> _temp -> 16 `i ]
-[; ;Main.c: 269: sprintf(buf, "PWR=%d ", (int)temp);
+[e = _temp + * -> _remote_power_level `l -> 25700 `l -> 32768 `l ]
+[; ;Main.c: 269: temp = temp >> 16;
 "269
-[e ( _sprintf (1 , (. , &U _buf :s 29C -> _temp `i ]
-[; ;Main.c: 270: serputstr(buf);
+[e = _temp >> _temp -> 16 `i ]
+[; ;Main.c: 270: sprintf(buf, "PWR=%d ", (int)temp);
 "270
+[e ( _sprintf (1 , (. , &U _buf :s 30C -> _temp `i ]
+[; ;Main.c: 271: serputstr(buf);
+"271
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 272: sprintf(buf, "FL1=%d ", ~RB0 & 0x0001);
-"272
-[e ( _sprintf (1 , (. , &U _buf :s 30C & ~ -> _RB0 `ui -> -> 1 `i `ui ]
-[; ;Main.c: 273: serputstr(buf);
+[; ;Main.c: 273: sprintf(buf, "FL1=%d ", ~RB0 & 0x0001);
 "273
+[e ( _sprintf (1 , (. , &U _buf :s 31C & ~ -> _RB0 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 274: serputstr(buf);
+"274
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 275: sprintf(buf, "FL2=%d ", ~RB2 & 0x0001);
-"275
-[e ( _sprintf (1 , (. , &U _buf :s 31C & ~ -> _RB2 `ui -> -> 1 `i `ui ]
-[; ;Main.c: 276: serputstr(buf);
+[; ;Main.c: 276: sprintf(buf, "FL2=%d ", ~RB2 & 0x0001);
 "276
+[e ( _sprintf (1 , (. , &U _buf :s 32C & ~ -> _RB2 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 277: serputstr(buf);
+"277
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 278: sprintf(buf, "OT1=%d ", ~RB1 & 0x0001);
-"278
-[e ( _sprintf (1 , (. , &U _buf :s 32C & ~ -> _RB1 `ui -> -> 1 `i `ui ]
-[; ;Main.c: 279: serputstr(buf);
+[; ;Main.c: 279: sprintf(buf, "OT1=%d ", ~RB1 & 0x0001);
 "279
+[e ( _sprintf (1 , (. , &U _buf :s 33C & ~ -> _RB1 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 280: serputstr(buf);
+"280
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 281: sprintf(buf, "OT2=%d", ~RB3 & 0x0001);
-"281
-[e ( _sprintf (1 , (. , &U _buf :s 33C & ~ -> _RB3 `ui -> -> 1 `i `ui ]
-[; ;Main.c: 282: serputstr(buf);
+[; ;Main.c: 282: sprintf(buf, "OT2=%d", ~RB3 & 0x0001);
 "282
+[e ( _sprintf (1 , (. , &U _buf :s 34C & ~ -> _RB3 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 283: serputstr(buf);
+"283
 [e ( _serputstr (1 -> &U _buf `*Cuc ]
-[; ;Main.c: 284: serputstr("\r");
-"284
-[e ( _serputstr (1 :s 34C ]
-[; ;Main.c: 285: if (echo_enabled) serputstr("\n");
+[; ;Main.c: 285: serputstr("\r");
 "285
-[e $ ! _echo_enabled 415  ]
 [e ( _serputstr (1 :s 35C ]
+[; ;Main.c: 286: if (echo_enabled) serputstr("\n");
+"286
+[e $ ! _echo_enabled 415  ]
+[e ( _serputstr (1 :s 36C ]
 [e :U 415 ]
-[; ;Main.c: 287: return -3;
-"287
+[; ;Main.c: 288: return -3;
+"288
 [e ) -U -> 3 `i ]
 [e $UE 414  ]
-[; ;Main.c: 289: }
-"289
+[; ;Main.c: 290: }
+"290
 [e :UE 414 ]
 }
+"292
+[v _errors_command `(i ~T0 @X0 1 ef1`*uc ]
+"293
+{
+[; ;Main.c: 292: int errors_command(char *param1)
+[; ;Main.c: 293: {
+[e :U _errors_command ]
+"292
+[v _param1 `*uc ~T0 @X0 1 r1 ]
+"293
+[f ]
+"294
+[v _buf `uc ~T0 @X0 -> 10 `i a ]
+[; ;Main.c: 294: char buf[10];
+[; ;Main.c: 295: serputstr("ERR ");
+"295
+[e ( _serputstr (1 :s 37C ]
+[; ;Main.c: 297: sprintf(buf, "FL1=%d ", ~RB0 & 0x0001);
+"297
+[e ( _sprintf (1 , (. , &U _buf :s 38C & ~ -> _RB0 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 298: serputstr(buf);
+"298
+[e ( _serputstr (1 -> &U _buf `*Cuc ]
+[; ;Main.c: 300: sprintf(buf, "FL2=%d ", ~RB2 & 0x0001);
+"300
+[e ( _sprintf (1 , (. , &U _buf :s 39C & ~ -> _RB2 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 301: serputstr(buf);
+"301
+[e ( _serputstr (1 -> &U _buf `*Cuc ]
+[; ;Main.c: 303: sprintf(buf, "OT1=%d ", ~RB1 & 0x0001);
+"303
+[e ( _sprintf (1 , (. , &U _buf :s 40C & ~ -> _RB1 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 304: serputstr(buf);
+"304
+[e ( _serputstr (1 -> &U _buf `*Cuc ]
+[; ;Main.c: 306: sprintf(buf, "OT2=%d", ~RB3 & 0x0001);
+"306
+[e ( _sprintf (1 , (. , &U _buf :s 41C & ~ -> _RB3 `ui -> -> 1 `i `ui ]
+[; ;Main.c: 307: serputstr(buf);
+"307
+[e ( _serputstr (1 -> &U _buf `*Cuc ]
+[; ;Main.c: 309: serputstr("\r");
+"309
+[e ( _serputstr (1 :s 42C ]
+[; ;Main.c: 310: if (echo_enabled) serputstr("\n");
+"310
+[e $ ! _echo_enabled 417  ]
+[e ( _serputstr (1 :s 43C ]
+[e :U 417 ]
+[; ;Main.c: 312: return -3;
+"312
+[e ) -U -> 3 `i ]
+[e $UE 416  ]
+[; ;Main.c: 314: }
+"314
+[e :UE 416 ]
+}
 [p f _sprintf 8388736 ]
-[a 23C 126 0 ]
+[a 24C 126 0 ]
 [a 20C 116 116 108 111 117 116 0 ]
 [a 21C 115 116 97 116 117 115 0 ]
+[a 22C 101 114 114 111 114 115 0 ]
 [a 19C 112 119 114 0 ]
 [a 14C 101 99 104 111 0 ]
 [a 15C 114 101 109 0 ]
 [a 18C 112 117 108 115 101 0 ]
-[a 33C 79 84 50 61 37 100 0 ]
+[a 34C 79 84 50 61 37 100 0 ]
+[a 41C 79 84 50 61 37 100 0 ]
 [a 17C 101 110 97 98 50 0 ]
 [a 16C 101 110 97 98 49 0 ]
-[a 29C 80 87 82 61 37 100 32 0 ]
-[a 25C 82 69 77 61 37 100 32 0 ]
-[a 28C 80 85 76 61 37 100 32 0 ]
-[a 27C 69 78 50 61 37 100 32 0 ]
-[a 31C 70 76 50 61 37 100 32 0 ]
-[a 32C 79 84 49 61 37 100 32 0 ]
-[a 26C 69 78 49 61 37 100 32 0 ]
-[a 30C 70 76 49 61 37 100 32 0 ]
-[a 24C 79 75 32 0 ]
-[a 22C 32 0 ]
+[a 30C 80 87 82 61 37 100 32 0 ]
+[a 26C 82 69 77 61 37 100 32 0 ]
+[a 29C 80 85 76 61 37 100 32 0 ]
+[a 28C 69 78 50 61 37 100 32 0 ]
+[a 32C 70 76 50 61 37 100 32 0 ]
+[a 39C 70 76 50 61 37 100 32 0 ]
+[a 33C 79 84 49 61 37 100 32 0 ]
+[a 40C 79 84 49 61 37 100 32 0 ]
+[a 27C 69 78 49 61 37 100 32 0 ]
+[a 31C 70 76 49 61 37 100 32 0 ]
+[a 38C 70 76 49 61 37 100 32 0 ]
+[a 37C 69 82 82 32 0 ]
+[a 25C 79 75 32 0 ]
+[a 23C 32 0 ]
 [a 4C 79 75 13 0 ]
 [a 12C 79 75 13 0 ]
 [a 2C 69 82 82 52 13 0 ]
 [a 10C 69 82 82 51 13 0 ]
 [a 8C 69 82 82 50 13 0 ]
 [a 6C 69 82 82 49 13 0 ]
-[a 34C 13 0 ]
+[a 35C 13 0 ]
+[a 42C 13 0 ]
 [a 3C 69 82 82 52 32 99 111 109 109 97 110 100 32 108 105 110 101 32 98 117 102 102 101 114 32 111 118 101 114 102 108 111 119 13 10 0 ]
 [a 9C 69 82 82 50 32 112 97 114 97 109 101 116 101 114 32 109 105 115 115 105 110 103 13 10 0 ]
 [a 11C 69 82 82 51 32 98 97 100 32 112 97 114 97 109 101 116 101 114 32 118 97 108 117 101 13 10 0 ]
@@ -4120,4 +4193,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 1C 13 83 65 87 32 78 101 98 117 108 105 122 101 114 32 82 70 32 68 114 105 118 101 114 32 45 32 49 46 48 13 10 0 ]
 [a 5C 10 0 ]
 [a 13C 10 0 ]
-[a 35C 10 0 ]
+[a 36C 10 0 ]
+[a 43C 10 0 ]

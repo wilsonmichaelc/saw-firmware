@@ -126,29 +126,31 @@
 [v ___fltoee __fltoee `(d  1 e 3 0 ]
 "49 /Applications/microchip/xc8/v1.32/sources/pic/ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"26 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+"26 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/interrupt.c
 [v _tc_int tc_int `II(v  1 e 0 0 ]
-"35 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+"35 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/Main.c
 [v _main main `(i  1 e 2 0 ]
-"130
+"131
 [v _parse_setup_cmd parse_setup_cmd `(i  1 e 2 0 ]
-"167
+"168
 [v _echo_command echo_command `(i  1 e 2 0 ]
-"178
+"179
 [v _remote_command remote_command `(i  1 e 2 0 ]
-"189
+"190
 [v _enable1_command enable1_command `(i  1 e 2 0 ]
-"200
+"201
 [v _enable2_command enable2_command `(i  1 e 2 0 ]
-"211
+"212
 [v _pulse_command pulse_command `(i  1 e 2 0 ]
-"222
+"223
 [v _power_command power_command `(i  1 e 2 0 ]
-"237
+"238
 [v _ttlout_command ttlout_command `(i  1 e 2 0 ]
-"249
+"250
 [v _status_command status_command `(i  1 e 2 0 ]
-"8 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+"292
+[v _errors_command errors_command `(i  1 e 2 0 ]
+"8 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/support.c
 [v _pic_setup pic_setup `(v  1 e 0 0 ]
 "81
 [v _serputchar serputchar `(v  1 e 0 0 ]
@@ -274,13 +276,13 @@
 [v _nDONE nDONE `VEb  1 e 0 @1257 ]
 "354 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"10 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+"10 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/interrupt.c
 [v _AD_x AD_x `DCC[8]ui  1 s 16 AD_x ]
 "11
 [v _AD_a AD_a `DCC[8]ul  1 s 32 AD_a ]
 "12
 [v _AD_b AD_b `DCC[8]uc  1 s 8 AD_b ]
-"17 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+"17 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/Main.c
 [v _echo_enabled echo_enabled `b  1 e 0 0 ]
 "18
 [v _remote_enabled remote_enabled `b  1 e 0 0 ]
@@ -303,7 +305,7 @@
 [v _enc_position enc_position `i  1 e 2 0 ]
 [s S111 cmdlist 4 `*.25DCCuc 1 cmdname 2 0 `*.37(i 1 cmdptr 2 2 ]
 "114
-[v _commands commands `DCC[8]S111  1 e 32 0 ]
+[v _commands commands `DCC[9]S111  1 e 36 0 ]
 "35
 [v _main main `(i  1 e 2 0 ]
 {
@@ -322,128 +324,92 @@
 [v main@argv argv `*.1*.1uc  1 p 2 42 ]
 "111
 } 0
-"249
+"292
+[v _errors_command errors_command `(i  1 e 2 0 ]
+{
+"294
+[v errors_command@buf buf `[10]uc  1 a 10 23 ]
+"292
+[v errors_command@param1 param1 `*.4uc  1 p 1 19 ]
+"314
+} 0
+"250
 [v _status_command status_command `(i  1 e 2 0 ]
 {
-"251
-[v status_command@buf buf `[10]uc  1 a 10 26 ]
 "252
+[v status_command@buf buf `[10]uc  1 a 10 26 ]
+"253
 [v status_command@temp temp `l  1 a 4 36 ]
-"249
+"250
 [v status_command@param1 param1 `*.4uc  1 p 1 19 ]
-"289
+"290
 } 0
-"222
+"223
 [v _power_command power_command `(i  1 e 2 0 ]
 {
-"225
+"226
 [v power_command@temp temp `l  1 a 4 27 ]
-"224
+"225
 [v power_command@val val `i  1 a 2 31 ]
-"222
+"223
 [v power_command@param1 param1 `*.4uc  1 p 1 19 ]
-"235
+"236
 } 0
-"211
+"212
 [v _pulse_command pulse_command `(i  1 e 2 0 ]
 {
-"213
+"214
 [v pulse_command@val val `i  1 a 2 22 ]
-"211
+"212
 [v pulse_command@param1 param1 `*.4uc  1 p 1 19 ]
-"220
+"221
 } 0
-"200
+"201
 [v _enable2_command enable2_command `(i  1 e 2 0 ]
 {
-"202
+"203
 [v enable2_command@val val `i  1 a 2 22 ]
-"200
+"201
 [v enable2_command@param1 param1 `*.4uc  1 p 1 19 ]
-"209
+"210
 } 0
-"189
+"190
 [v _enable1_command enable1_command `(i  1 e 2 0 ]
 {
-"191
+"192
 [v enable1_command@val val `i  1 a 2 22 ]
-"189
+"190
 [v enable1_command@param1 param1 `*.4uc  1 p 1 19 ]
-"198
+"199
 } 0
-"178
+"179
 [v _remote_command remote_command `(i  1 e 2 0 ]
 {
-"180
+"181
 [v remote_command@val val `i  1 a 2 22 ]
-"178
+"179
 [v remote_command@param1 param1 `*.4uc  1 p 1 19 ]
-"187
+"188
 } 0
-"167
+"168
 [v _echo_command echo_command `(i  1 e 2 0 ]
 {
-"169
+"170
 [v echo_command@val val `i  1 a 2 22 ]
-"167
+"168
 [v echo_command@param1 param1 `*.4uc  1 p 1 19 ]
-"176
+"177
 } 0
-"237
+"238
 [v _ttlout_command ttlout_command `(i  1 e 2 0 ]
 {
-"239
+"240
 [v ttlout_command@val val `i  1 a 2 22 ]
-"237
+"238
 [v ttlout_command@param1 param1 `*.4uc  1 p 1 19 ]
-"246
+"247
 } 0
-"492 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
-[v _sprintf sprintf `(i  1 e 2 0 ]
-{
-[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
-[s S377 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
-"533
-[u S380 . 4 `ui 1 _val 2 0 `S377 1 _str 4 0 ]
-[v sprintf@_val _val `S380  1 a 4 13 ]
-"499
-[v sprintf@c c `c  1 a 1 18 ]
-"506
-[v sprintf@prec prec `c  1 a 1 12 ]
-"508
-[v sprintf@flag flag `uc  1 a 1 11 ]
-"494
-[v sprintf@ap ap `[1]*.4v  1 a 1 10 ]
-"492
-[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
-[v sprintf@f f `*.25DCCuc  1 p 2 2 ]
-"542
-[v sprintf@sp sp `*.4uc  1 a 1 17 ]
-"1550
-} 0
-"6 /Applications/microchip/xc8/v1.32/sources/common/lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwmod@counter counter `uc  1 a 1 1 ]
-"6
-[v ___lwmod@divisor divisor `ui  1 p 2 31 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 33 ]
-"26
-} 0
-"6 /Applications/microchip/xc8/v1.32/sources/common/lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 29 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 28 ]
-"6
-[v ___lwdiv@divisor divisor `ui  1 p 2 23 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 25 ]
-"31
-} 0
-"103 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+"103 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/support.c
 [v _sergetline sergetline `(i  1 e 2 0 ]
 {
 [v sergetline@buf buf `*.4uc  1 a 1 wreg ]
@@ -467,25 +433,7 @@
 [v tolower@c c `uc  1 a 1 23 ]
 "13
 } 0
-"93 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
-[v _serputstr serputstr `(v  1 e 0 0 ]
-{
-"95
-[v serputstr@i i `i  1 a 2 2 ]
-[v serputstr@len len `i  1 a 2 0 ]
-"93
-[v serputstr@line line `*.26DCCuc  1 p 2 29 ]
-"101
-} 0
-"81
-[v _serputchar serputchar `(v  1 e 0 0 ]
-{
-[v serputchar@c c `DCCuc  1 a 1 wreg ]
-[v serputchar@c c `DCCuc  1 a 1 wreg ]
-[v serputchar@c c `DCCuc  1 a 1 23 ]
-"85
-} 0
-"87
+"87 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/support.c
 [v _sergetchar sergetchar `(uc  1 e 1 0 ]
 {
 "91
@@ -500,29 +448,29 @@
 [v ___lmul@multiplicand multiplicand `ul  1 p 4 27 ]
 "129
 } 0
-"8 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/support.c
+"8 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/support.c
 [v _pic_setup pic_setup `(v  1 e 0 0 ]
 {
 "78
 } 0
-"130 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/Main.c
+"131 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/Main.c
 [v _parse_setup_cmd parse_setup_cmd `(i  1 e 2 0 ]
 {
 [v parse_setup_cmd@buf buf `*.4uc  1 a 1 wreg ]
-"132
+"133
 [v parse_setup_cmd@cbuf cbuf `[10]uc  1 a 10 16 ]
-"134
+"135
 [v parse_setup_cmd@i i `i  1 a 2 29 ]
 [v parse_setup_cmd@num_cmds num_cmds `i  1 a 2 26 ]
-"133
+"134
 [v parse_setup_cmd@tokptr tokptr `*.4uc  1 a 1 31 ]
-"130
+"131
 [v parse_setup_cmd@buf buf `*.4uc  1 a 1 wreg ]
 [s S77 command 12 `[10]uc 1 arg1 10 0 `*.37(i 1 cmdptr 2 10 ]
 [v parse_setup_cmd@cmd_descr cmd_descr `*.4S77  1 p 1 8 ]
-"137
+"138
 [v parse_setup_cmd@buf buf `*.4uc  1 a 1 28 ]
-"165
+"166
 } 0
 "8 /Applications/microchip/xc8/v1.32/sources/common/strtok.c
 [v _strtok strtok `(*.4uc  1 e 1 0 ]
@@ -594,6 +542,69 @@
 [v strcmp@s1 s1 `*.4DCCuc  1 a 1 27 ]
 "42
 } 0
+"492 /Applications/microchip/xc8/v1.32/sources/common/doprnt.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
+[s S393 . 4 `*.1DCCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+"533
+[u S396 . 4 `ui 1 _val 2 0 `S393 1 _str 4 0 ]
+[v sprintf@_val _val `S396  1 a 4 13 ]
+"499
+[v sprintf@c c `c  1 a 1 17 ]
+"506
+[v sprintf@prec prec `c  1 a 1 12 ]
+"508
+[v sprintf@flag flag `uc  1 a 1 11 ]
+"494
+[v sprintf@ap ap `[1]*.4v  1 a 1 10 ]
+"492
+[v sprintf@sp sp `*.4uc  1 a 1 wreg ]
+[v sprintf@f f `*.25DCCuc  1 p 2 2 ]
+"542
+[v sprintf@sp sp `*.4uc  1 a 1 18 ]
+"1550
+} 0
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 1 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 31 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 33 ]
+"26
+} 0
+"6 /Applications/microchip/xc8/v1.32/sources/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 29 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 28 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 23 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 25 ]
+"31
+} 0
+"93 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/support.c
+[v _serputstr serputstr `(v  1 e 0 0 ]
+{
+"95
+[v serputstr@i i `i  1 a 2 2 ]
+[v serputstr@len len `i  1 a 2 0 ]
+"93
+[v serputstr@line line `*.26DCCuc  1 p 2 29 ]
+"101
+} 0
+"81
+[v _serputchar serputchar `(v  1 e 0 0 ]
+{
+[v serputchar@c c `DCCuc  1 a 1 wreg ]
+[v serputchar@c c `DCCuc  1 a 1 wreg ]
+[v serputchar@c c `DCCuc  1 a 1 23 ]
+"85
+} 0
 "4 /Applications/microchip/xc8/v1.32/sources/common/strlen.c
 [v _strlen strlen `(ui  1 e 2 0 ]
 {
@@ -635,7 +646,7 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 25 ]
 "53
 } 0
-"26 /Users/mwilson/Cloud/mwilson/Deurion/Electronics Box Firmware/Saw Nebulizer.X/interrupt.c
+"26 /Users/mwilson/Cloud/mwilson/Deurion/saw-firmware/Saw Nebulizer.X/interrupt.c
 [v _tc_int tc_int `II(v  1 e 0 0 ]
 {
 "32

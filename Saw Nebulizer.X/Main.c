@@ -119,7 +119,8 @@ const CMD_LIST_ITEM commands[] = {
 	{"pulse", pulse_command},
 	{"pwr", power_command},
 	{"ttlout", ttlout_command},
-	{"status", status_command}
+	{"status", status_command},
+        {"errors", errors_command}
 };
 
 /* Function to parse command and parameter. If succesful the function
@@ -286,4 +287,28 @@ int status_command(char *param1)
 
 	return -3;		//Not an error, but suppresses "OK" from command dispatcher
 	
+}
+
+int errors_command(char *param1)
+{
+	char buf[10];
+	serputstr("ERR ");
+
+	sprintf(buf, "FL1=%d ", ~FAULT_1_LED_L & 0x0001);
+	serputstr(buf);
+
+	sprintf(buf, "FL2=%d ", ~FAULT_2_LED_L & 0x0001);
+	serputstr(buf);
+
+	sprintf(buf, "OT1=%d ", ~OVER_TEMP_1_LED_L & 0x0001);
+	serputstr(buf);
+
+	sprintf(buf, "OT2=%d", ~OVER_TEMP_2_LED_L & 0x0001);
+	serputstr(buf);
+
+	serputstr("\r");
+	if (echo_enabled) serputstr("\n");
+
+	return -3;		//Not an error, but suppresses "OK" from command dispatcher
+
 }

@@ -3252,6 +3252,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;functions.h: 14: int power_command(char *param1);
 [; ;functions.h: 15: int ttlout_command(char *param1);
 [; ;functions.h: 16: int status_command(char *param1);
+[; ;functions.h: 17: int errors_command(char *param1);
 "8 support.c
 [v _pic_setup `(v ~T0 @X0 1 ef ]
 "9

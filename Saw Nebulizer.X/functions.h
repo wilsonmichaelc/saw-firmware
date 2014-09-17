@@ -14,3 +14,4 @@ int pulse_command(char *param1);
 int power_command(char *param1);
 int ttlout_command(char *param1);
 int status_command(char *param1);
+int errors_command(char *param1);
